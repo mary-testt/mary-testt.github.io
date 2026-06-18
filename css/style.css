@@ -192,7 +192,7 @@ a { text-decoration: none; color: inherit; }
 .about-section { padding: 60px 0; background: var(--white); }
 .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
 .about-images {
-  display: grid; grid-template-columns: 1fr 1fr; grid-template-rows: 280px 280px;
+  display: grid; grid-template-columns: 1fr 1fr; grid-template-rows: 350px 350px;
   gap: 10px; position: relative;
 }
 .about-img-main { grid-row: span 2; overflow: hidden; border-radius: 3px; }
@@ -278,7 +278,7 @@ a { text-decoration: none; color: inherit; }
 /* ──── NOVEDADES ──── */
 .novedades-section { padding: 90px 0; background: #fff; }
 .novedades-header { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 48px; flex-wrap: wrap; gap: 16px; }
-.novedades-grid { display: grid; grid-template-columns: 1.5fr 1fr 1fr; gap: 24px; }
+.novedades-grid { display: grid; grid-template-columns: 1.5fr 1fr; gap: 24px; }
 .novedad-card {
   background: var(--white); border-radius: 4px; overflow: hidden;
   border: 1px solid var(--gray);
@@ -429,12 +429,11 @@ footer { background: #111; padding: 64px 0 28px; }
 /* ──── RESPONSIVE ──── */
 @media (max-width: 1024px) {
   .about-grid { grid-template-columns: 1fr; gap: 48px; }
-  .about-images { max-width: 560px; margin: 0 auto; }
+  .about-images { max-width: 560px; margin: 0 auto; grid-template-rows: 240px 240px; }
   .metrics-grid { grid-template-columns: repeat(2,1fr); }
   .plantas-grid { grid-template-columns: repeat(2,1fr); }
   .plantas-grid-bottom { grid-template-columns: repeat(2,1fr); max-width: none; }
   .novedades-grid { grid-template-columns: 1fr 1fr; }
-  .novedades-grid .novedad-card:nth-child(1) { grid-column: span 2; }
   .contact-grid { grid-template-columns: 1fr; gap: 48px; }
   .footer-grid { grid-template-columns: 1fr 1fr; }
   .planta-page-grid { grid-template-columns: 1fr; }
