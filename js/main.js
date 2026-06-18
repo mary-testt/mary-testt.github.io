@@ -8,8 +8,9 @@ const PLANT_NAV = {
   'planta-inalsa':  'solid-olive',
 };
 let currentPage = 'home';
+history.replaceState({ page: 'home' }, '', window.location.pathname + window.location.search);
 
-function showPage(id) {
+function showPage(id, push = true) {
   document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
   const el = document.getElementById('page-' + id);
   if (el) {
@@ -23,6 +24,9 @@ function showPage(id) {
     updateNavSolid();
   } else {
     navbar.classList.add(PLANT_NAV[id] || 'solid');
+  }
+  if (push) {
+    history.pushState({ page: id }, '', id === 'home' ? window.location.pathname : '#' + id);
   }
 }
 
@@ -49,6 +53,15 @@ function updateNavSolid() {
   navbar.classList.toggle('solid', window.scrollY > 60);
 }
 window.addEventListener('scroll', updateNavSolid);
+
+window.addEventListener('popstate', function(e) {
+  const page = e.state && e.state.page ? e.state.page : 'home';
+  const wasPlant = Object.keys(PLANT_NAV).includes(currentPage);
+  showPage(page, false);
+  if (page === 'home' && wasPlant) {
+    setTimeout(() => scrollToSection('plantas'), 300);
+  }
+});
 
 // Make nav always solid on inner pages
 function toggleMobile() {
@@ -104,7 +117,7 @@ function sendForm(btn) {
     welcome: {
       msg: '¡Hola! Soy <strong>Mary</strong>, tu asistente virtual de <strong>Alimentos Mary</strong>.<br>¿En qué puedo ayudarte hoy?',
       chips: [
-        { label: '💼 Empleos y Vacantes', action: 'empleos' }
+        { label: '💼 Quiero trabajar con ustedes', action: 'empleos' }
       ]
     },
     empleos: {
